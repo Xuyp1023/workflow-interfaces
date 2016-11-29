@@ -14,6 +14,9 @@ import java.util.Map;
  * 流程定义接口
  */
 public interface IWorkFlowDefinitionService {
+    // 基础流程列表
+    String webQueryDefaultWorkFlow();
+
     //查询公司拥有的流程
     String webQueryWorkFlowBase(Long anCustNo, final int anFlag, final int anPageNum, final int anPageSize);
 
@@ -33,13 +36,13 @@ public interface IWorkFlowDefinitionService {
     String webFindWorkFlowStep(Long anStepId);
 
     //添加流程
-    String webAddWorkFlowBase(Map<String, Object> anParam, final Long anDefaultBaseId, final Long anCustNo);
+    String webAddWorkFlowBase(Map<String, Object> anParam, final Long anDefaultBaseId, final Long anCustNo, final String anNickname);
 
     //保存流程
-    String webSaveWorkFlowBase(Map<String, Object> anParam, final Long anBaseId);
+    String webSaveWorkFlowBase(Map<String, Object> anParam, final Long anBaseId, final String anNickname);
 
     //添加流程审批步骤
-    String webAddWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId);
+    String webAddWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId, String anNickname);
 
     //修改流程审批步骤
     String webSaveWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId, final Long anStepId);
@@ -64,4 +67,18 @@ public interface IWorkFlowDefinitionService {
 
     //发布流程
     String webSavePublishWorkFlow(Long anBaseId);
+
+    // 查询金额段
+    String webQueryWorkFlowMoneySection(Long anBaseId);
+
+    // 保存金额段
+    String webSaveWorkFlowMoneySection(Long anBaseId, String anMoneySection);
+
+    // 为经办节点分配操作员
+    String webAssigneeWorkFlowNodeApprover(Long anBaseId, Long anNodeId, Long anOperId);
+
+    // 上移步骤
+    String webMoveUpWorkFlowStep(Long anBaseId, Long anNodeId, Long anStepId);
+    // 下移步骤
+    String webMoveDownWorkFlowStep(Long anBaseId, Long anNodeId, Long anStepId);
 }
