@@ -14,6 +14,7 @@ import java.util.Map;
  * 流程定义接口
  */
 public interface IWorkFlowDefinitionService {
+
     // 基础流程列表
     String webQueryDefaultWorkFlow();
 
@@ -79,6 +80,13 @@ public interface IWorkFlowDefinitionService {
 
     // 上移步骤
     String webMoveUpWorkFlowStep(Long anBaseId, Long anNodeId, Long anStepId);
+
     // 下移步骤
     String webMoveDownWorkFlowStep(Long anBaseId, Long anNodeId, Long anStepId);
+
+    // 查询金额段列表
+    String webQueryWorkFlowMoney(Long anBaseId);
+
+    // 查询流程定义
+    String webFindWorkFlowStepDefine(final Long anBaseId, final Long anNodeId, final Long anStepId);
 }
