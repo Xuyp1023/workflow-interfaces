@@ -7,12 +7,29 @@
 // ============================================================================
 package com.betterjr.modules.workflow.handler;
 
+import java.util.Map;
+
 /**
  * @author liuwl
  *
  */
-public interface WorkFlowHandler {
-    void pre();
-    void process();
-    void post();
+public interface INodeHandler {
+    String RESULT = "RESULT";
+
+    /**
+     * 处理通过
+     */
+    void processPass(Map<String, Object> context);
+    /**
+     * 处理驳回
+     */
+    void processReject(Map<String, Object> context);
+    /**
+     * 处理办理
+     */
+    void processHandle(Map<String, Object> context);
+    /**
+     * 处理保存
+     */
+    void processSave(Map<String, Object> context);
 }

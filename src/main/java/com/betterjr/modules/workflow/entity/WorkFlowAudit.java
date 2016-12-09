@@ -1,8 +1,21 @@
 package com.betterjr.modules.workflow.entity;
 
-import com.betterjr.common.annotation.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import com.betterjr.common.entity.BetterjrEntity;
-import javax.persistence.*;
+import com.betterjr.common.mapper.CustDateJsonSerializer;
+import com.betterjr.common.mapper.CustTimeJsonSerializer;
+import com.betterjr.common.selectkey.SerialGenerator;
+import com.betterjr.common.utils.BetterDateUtils;
+import com.betterjr.common.utils.UserUtils;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Access(AccessType.FIELD)
 @Entity
@@ -15,11 +28,23 @@ public class WorkFlowAudit implements BetterjrEntity {
     @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
     private Long baseId;
 
+    @Transient
+    private String baseName;
+
     @Column(name = "L_NODE_ID",  columnDefinition="INTEGER" )
     private Long nodeId;
 
+    @Transient
+    private String nodeName;
+
     @Column(name = "L_STEP_ID",  columnDefinition="INTEGER" )
     private Long stepId;
+
+    @Transient
+    private String stepName;
+
+    @Column(name = "L_BUSINESS_ID",  columnDefinition="INTEGER" )
+    private Long businessId;
 
     @Column(name = "C_ORDER_ID",  columnDefinition="VARCHAR" )
     private String orderId;
@@ -30,18 +55,25 @@ public class WorkFlowAudit implements BetterjrEntity {
     @Column(name = "L_OPERID",  columnDefinition="INTEGER" )
     private Long operId;
 
+    @Column(name = "C_OPERNAME",  columnDefinition="VARCHAR" )
+    private String operName;
+
     @Column(name = "L_CUSTNO",  columnDefinition="INTEGER" )
     private Long custNo;
 
     @Column(name = "L_CUSTNAME",  columnDefinition="VARCHAR" )
-    private Long custName;
+    private String custName;
 
     @Column(name = "C_OPERORG",  columnDefinition="VARCHAR" )
     private String operOrg;
 
+    @JsonSerialize(using = CustDateJsonSerializer.class)
+    @OrderBy("DESC")
     @Column(name = "D_AUDIT_DATE",  columnDefinition="VARCHAR" )
     private String auditDate;
 
+    @JsonSerialize(using = CustTimeJsonSerializer.class)
+    @OrderBy("DESC")
     @Column(name = "T_AUDIT_TIME",  columnDefinition="VARCHAR" )
     private String auditTime;
 
@@ -87,7 +119,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -95,7 +127,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return baseId;
     }
 
-    public void setBaseId(Long baseId) {
+    public void setBaseId(final Long baseId) {
         this.baseId = baseId;
     }
 
@@ -103,7 +135,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return nodeId;
     }
 
-    public void setNodeId(Long nodeId) {
+    public void setNodeId(final Long nodeId) {
         this.nodeId = nodeId;
     }
 
@@ -111,15 +143,23 @@ public class WorkFlowAudit implements BetterjrEntity {
         return stepId;
     }
 
-    public void setStepId(Long stepId) {
+    public void setStepId(final Long stepId) {
         this.stepId = stepId;
+    }
+
+    public Long getBusinessId() {
+        return businessId;
+    }
+
+    public void setBusinessId(final Long anBusinessId) {
+        businessId = anBusinessId;
     }
 
     public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(final String orderId) {
         this.orderId = orderId;
     }
 
@@ -127,7 +167,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return taskId;
     }
 
-    public void setTaskId(String taskId) {
+    public void setTaskId(final String taskId) {
         this.taskId = taskId;
     }
 
@@ -135,23 +175,31 @@ public class WorkFlowAudit implements BetterjrEntity {
         return operId;
     }
 
-    public void setOperId(Long operId) {
+    public void setOperId(final Long operId) {
         this.operId = operId;
+    }
+
+    public String getOperName() {
+        return operName;
+    }
+
+    public void setOperName(final String anOperName) {
+        operName = anOperName;
     }
 
     public Long getCustNo() {
         return custNo;
     }
 
-    public void setCustNo(Long custNo) {
+    public void setCustNo(final Long custNo) {
         this.custNo = custNo;
     }
 
-    public Long getCustName() {
+    public String getCustName() {
         return custName;
     }
 
-    public void setCustName(Long custName) {
+    public void setCustName(final String custName) {
         this.custName = custName;
     }
 
@@ -159,7 +207,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return operOrg;
     }
 
-    public void setOperOrg(String operOrg) {
+    public void setOperOrg(final String operOrg) {
         this.operOrg = operOrg == null ? null : operOrg.trim();
     }
 
@@ -167,7 +215,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return auditDate;
     }
 
-    public void setAuditDate(String auditDate) {
+    public void setAuditDate(final String auditDate) {
         this.auditDate = auditDate == null ? null : auditDate.trim();
     }
 
@@ -175,7 +223,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return auditTime;
     }
 
-    public void setAuditTime(String auditTime) {
+    public void setAuditTime(final String auditTime) {
         this.auditTime = auditTime == null ? null : auditTime.trim();
     }
 
@@ -183,7 +231,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return auditContent;
     }
 
-    public void setAuditContent(String auditContent) {
+    public void setAuditContent(final String auditContent) {
         this.auditContent = auditContent == null ? null : auditContent.trim();
     }
 
@@ -191,7 +239,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return auditResult;
     }
 
-    public void setAuditResult(String auditResult) {
+    public void setAuditResult(final String auditResult) {
         this.auditResult = auditResult == null ? null : auditResult.trim();
     }
 
@@ -199,7 +247,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return regOperId;
     }
 
-    public void setRegOperId(Long regOperId) {
+    public void setRegOperId(final Long regOperId) {
         this.regOperId = regOperId;
     }
 
@@ -207,7 +255,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return regOperName;
     }
 
-    public void setRegOperName(String regOperName) {
+    public void setRegOperName(final String regOperName) {
         this.regOperName = regOperName == null ? null : regOperName.trim();
     }
 
@@ -215,7 +263,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return regDate;
     }
 
-    public void setRegDate(String regDate) {
+    public void setRegDate(final String regDate) {
         this.regDate = regDate == null ? null : regDate.trim();
     }
 
@@ -223,7 +271,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return regTime;
     }
 
-    public void setRegTime(String regTime) {
+    public void setRegTime(final String regTime) {
         this.regTime = regTime == null ? null : regTime.trim();
     }
 
@@ -231,7 +279,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return modiOperId;
     }
 
-    public void setModiOperId(Long modiOperId) {
+    public void setModiOperId(final Long modiOperId) {
         this.modiOperId = modiOperId;
     }
 
@@ -239,7 +287,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return modiOperName;
     }
 
-    public void setModiOperName(String modiOperName) {
+    public void setModiOperName(final String modiOperName) {
         this.modiOperName = modiOperName == null ? null : modiOperName.trim();
     }
 
@@ -247,7 +295,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return modiDate;
     }
 
-    public void setModiDate(String modiDate) {
+    public void setModiDate(final String modiDate) {
         this.modiDate = modiDate == null ? null : modiDate.trim();
     }
 
@@ -255,7 +303,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return modiTime;
     }
 
-    public void setModiTime(String modiTime) {
+    public void setModiTime(final String modiTime) {
         this.modiTime = modiTime == null ? null : modiTime.trim();
     }
 
@@ -263,7 +311,7 @@ public class WorkFlowAudit implements BetterjrEntity {
         return businStatus;
     }
 
-    public void setBusinStatus(String businStatus) {
+    public void setBusinStatus(final String businStatus) {
         this.businStatus = businStatus == null ? null : businStatus.trim();
     }
 
@@ -271,13 +319,37 @@ public class WorkFlowAudit implements BetterjrEntity {
         return lastStatus;
     }
 
-    public void setLastStatus(String lastStatus) {
+    public void setLastStatus(final String lastStatus) {
         this.lastStatus = lastStatus == null ? null : lastStatus.trim();
+    }
+
+    public String getBaseName() {
+        return baseName;
+    }
+
+    public void setBaseName(final String anBaseName) {
+        baseName = anBaseName;
+    }
+
+    public String getNodeName() {
+        return nodeName;
+    }
+
+    public void setNodeName(final String anNodeName) {
+        nodeName = anNodeName;
+    }
+
+    public String getStepName() {
+        return stepName;
+    }
+
+    public void setStepName(final String anStepName) {
+        stepName = anStepName;
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
@@ -285,9 +357,11 @@ public class WorkFlowAudit implements BetterjrEntity {
         sb.append(", baseId=").append(baseId);
         sb.append(", nodeId=").append(nodeId);
         sb.append(", stepId=").append(stepId);
+        sb.append(", businessId=").append(businessId);
         sb.append(", orderId=").append(orderId);
         sb.append(", taskId=").append(taskId);
         sb.append(", operId=").append(operId);
+        sb.append(", operName=").append(operName);
         sb.append(", custNo=").append(custNo);
         sb.append(", custName=").append(custName);
         sb.append(", operOrg=").append(operOrg);
@@ -311,7 +385,7 @@ public class WorkFlowAudit implements BetterjrEntity {
     }
 
     @Override
-    public boolean equals(Object that) {
+    public boolean equals(final Object that) {
         if (this == that) {
             return true;
         }
@@ -321,31 +395,33 @@ public class WorkFlowAudit implements BetterjrEntity {
         if (getClass() != that.getClass()) {
             return false;
         }
-        WorkFlowAudit other = (WorkFlowAudit) that;
+        final WorkFlowAudit other = (WorkFlowAudit) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
-            && (this.getNodeId() == null ? other.getNodeId() == null : this.getNodeId().equals(other.getNodeId()))
-            && (this.getStepId() == null ? other.getStepId() == null : this.getStepId().equals(other.getStepId()))
-            && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
-            && (this.getTaskId() == null ? other.getTaskId() == null : this.getTaskId().equals(other.getTaskId()))
-            && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
-            && (this.getCustNo() == null ? other.getCustNo() == null : this.getCustNo().equals(other.getCustNo()))
-            && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
-            && (this.getOperOrg() == null ? other.getOperOrg() == null : this.getOperOrg().equals(other.getOperOrg()))
-            && (this.getAuditDate() == null ? other.getAuditDate() == null : this.getAuditDate().equals(other.getAuditDate()))
-            && (this.getAuditTime() == null ? other.getAuditTime() == null : this.getAuditTime().equals(other.getAuditTime()))
-            && (this.getAuditContent() == null ? other.getAuditContent() == null : this.getAuditContent().equals(other.getAuditContent()))
-            && (this.getAuditResult() == null ? other.getAuditResult() == null : this.getAuditResult().equals(other.getAuditResult()))
-            && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
-            && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
-            && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
-            && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
-            && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
-            && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
-            && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
-            && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
-            && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
-            && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
+                && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
+                && (this.getNodeId() == null ? other.getNodeId() == null : this.getNodeId().equals(other.getNodeId()))
+                && (this.getStepId() == null ? other.getStepId() == null : this.getStepId().equals(other.getStepId()))
+                && (this.getBusinessId() == null ? other.getBusinessId() == null : this.getBusinessId().equals(other.getBusinessId()))
+                && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
+                && (this.getTaskId() == null ? other.getTaskId() == null : this.getTaskId().equals(other.getTaskId()))
+                && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
+                && (this.getOperName() == null ? other.getOperName() == null : this.getOperName().equals(other.getOperName()))
+                && (this.getCustNo() == null ? other.getCustNo() == null : this.getCustNo().equals(other.getCustNo()))
+                && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
+                && (this.getOperOrg() == null ? other.getOperOrg() == null : this.getOperOrg().equals(other.getOperOrg()))
+                && (this.getAuditDate() == null ? other.getAuditDate() == null : this.getAuditDate().equals(other.getAuditDate()))
+                && (this.getAuditTime() == null ? other.getAuditTime() == null : this.getAuditTime().equals(other.getAuditTime()))
+                && (this.getAuditContent() == null ? other.getAuditContent() == null : this.getAuditContent().equals(other.getAuditContent()))
+                && (this.getAuditResult() == null ? other.getAuditResult() == null : this.getAuditResult().equals(other.getAuditResult()))
+                && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
+                && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
+                && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
+                && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
+                && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
+                && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
+                && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
+                && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
+                && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
+                && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
     }
 
     @Override
@@ -356,9 +432,11 @@ public class WorkFlowAudit implements BetterjrEntity {
         result = prime * result + ((getBaseId() == null) ? 0 : getBaseId().hashCode());
         result = prime * result + ((getNodeId() == null) ? 0 : getNodeId().hashCode());
         result = prime * result + ((getStepId() == null) ? 0 : getStepId().hashCode());
+        result = prime * result + ((getBusinessId() == null) ? 0 : getBusinessId().hashCode());
         result = prime * result + ((getOrderId() == null) ? 0 : getOrderId().hashCode());
         result = prime * result + ((getTaskId() == null) ? 0 : getTaskId().hashCode());
         result = prime * result + ((getOperId() == null) ? 0 : getOperId().hashCode());
+        result = prime * result + ((getOperName() == null) ? 0 : getOperName().hashCode());
         result = prime * result + ((getCustNo() == null) ? 0 : getCustNo().hashCode());
         result = prime * result + ((getCustName() == null) ? 0 : getCustName().hashCode());
         result = prime * result + ((getOperOrg() == null) ? 0 : getOperOrg().hashCode());
@@ -377,5 +455,22 @@ public class WorkFlowAudit implements BetterjrEntity {
         result = prime * result + ((getBusinStatus() == null) ? 0 : getBusinStatus().hashCode());
         result = prime * result + ((getLastStatus() == null) ? 0 : getLastStatus().hashCode());
         return result;
+    }
+
+    /**
+     *
+     */
+    public void initAddValue() {
+        this.id = SerialGenerator.getLongValue("WorkFlowAudit.id");
+
+        this.regDate = BetterDateUtils.getNumDate();
+        this.regTime = BetterDateUtils.getNumTime();
+        this.regOperId = UserUtils.getOperatorInfo() != null ? UserUtils.getOperatorInfo().getId() : 0L;
+        this.regOperName = UserUtils.getOperatorInfo() != null ? UserUtils.getOperatorInfo().getName() : "";
+
+        this.modiOperId = UserUtils.getOperatorInfo() != null ? UserUtils.getOperatorInfo().getId() : 0L;
+        this.modiOperName = UserUtils.getOperatorInfo() != null ? UserUtils.getOperatorInfo().getName() : "";
+        this.modiDate = BetterDateUtils.getNumDate();
+        this.modiTime = BetterDateUtils.getNumTime();
     }
 }

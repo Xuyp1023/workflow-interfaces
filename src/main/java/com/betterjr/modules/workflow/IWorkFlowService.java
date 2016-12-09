@@ -7,6 +7,8 @@
 // ============================================================================
 package com.betterjr.modules.workflow;
 
+import java.util.Map;
+
 import com.betterjr.modules.workflow.constants.WorkFlowInput;
 import com.betterjr.modules.workflow.entity.WorkFlowBusiness;
 
@@ -20,23 +22,32 @@ public interface IWorkFlowService {
     WorkFlowBusiness startWorkFlow(WorkFlowInput workFlowInput);
 
     // 待办任务
-    String webQueryTask(Long anOperId, Integer anPageNo);
+    String webQueryCurrentTask(int anPageNo, int anPageSize);
 
     // 已办任务
-    String webQueryHistoryTask();
+    String webQueryHistoryTask(int anPageNo, int anPageSize);
 
     // 加载节点
-    String webLoadTask();
+    String webFindTask(String anTaskId);
 
     // 审批通过
-    String webPassWorkFlow();
+    String webPassWorkFlow(String anTaskId, Map<String, Object> anParam);
 
     // 审批驳回
-    String webRejectWofkFlow();
+    String webRejectWorkFlow(String anTaskId, Map<String, Object> anParam);
+
+    // 经办提交
+    String webHandleWorkFlow(String anTaskId, Map<String, Object> anParam);
+
+    // 作废提交
+    String webCancelWorkFlow(String anTaskId, Map<String, Object> anParam);
+
+    // 经办数据保存
+    String webSaveWorkFlow(String anTaskId, Map<String, Object> anParam);
 
     // 审批记录
-    String webQueryAudit();
+    String webQueryAudit(String taskId, int anFlag, int anPageNum, int anPageSize);
 
     // 查询当前可驳回节点列表 第一项为上一步
-    String queryRejectNode();
+    String webQueryRejectNode(String taskId);
 }

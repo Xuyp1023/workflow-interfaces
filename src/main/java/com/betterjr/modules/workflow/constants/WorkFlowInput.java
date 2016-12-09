@@ -49,8 +49,16 @@ public class WorkFlowInput {
     private String businessType;
 
     private final Long operId;
+    private String operName;
 
+    // 任务Id
     private String taskId;
+
+    // 审批内容
+    private String content;
+
+    // 驳回节点
+    private String rejectNode;
 
     /**
      * 启动流程时使用
@@ -91,6 +99,7 @@ public class WorkFlowInput {
     public WorkFlowInput(final Long anOperId, final String anTaskId, final String anRejectNode) {
         this.operId = anOperId;
         this.taskId = anTaskId;
+        this.rejectNode = anRejectNode;
         param = new HashMap<>();
     }
 
@@ -201,8 +210,32 @@ public class WorkFlowInput {
         return operId;
     }
 
+    public String getOperName() {
+        return operName;
+    }
+
+    public void setOperName(final String anOperName) {
+        operName = anOperName;
+    }
+
     public String getTaskId() {
         return taskId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(final String anContent) {
+        content = anContent;
+    }
+
+    public String getRejectNode() {
+        return rejectNode;
+    }
+
+    public void setRejectNode(final String anRejectNode) {
+        rejectNode = anRejectNode;
     }
 
     /**
@@ -229,4 +262,11 @@ public class WorkFlowInput {
         BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
     }
 
+    /**
+     * 检查作废流程参数
+     */
+    public void checkCancelProcess() {
+        BTAssert.notNull(this.getOperId(), "操作员编号不允许为空！");
+        BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
+    }
 }
