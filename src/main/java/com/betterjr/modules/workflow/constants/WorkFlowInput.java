@@ -45,7 +45,7 @@ public class WorkFlowInput {
 
     private final Map<String, Object> param;
 
-    private Long businessId;
+    private String businessId;
     private String businessType;
 
     private final Long operId;
@@ -68,7 +68,7 @@ public class WorkFlowInput {
      * @param anBusinessId
      * @param anBusinessType
      */
-    public WorkFlowInput(final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo, final Long anBusinessId,
+    public WorkFlowInput(final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo, final String anBusinessId,
             final String anBusinessType) {
         BTAssert.isTrue(anBusinessType.length() == 2, "业务类型必须为2个字符");
         this.flowName = anWorkFlowName;
@@ -198,7 +198,7 @@ public class WorkFlowInput {
         platformCustNo = anPlatformCustNo;
     }
 
-    public Long getBusinessId() {
+    public String getBusinessId() {
         return businessId;
     }
 
