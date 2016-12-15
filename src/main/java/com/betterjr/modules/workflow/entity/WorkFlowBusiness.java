@@ -23,8 +23,8 @@ public class WorkFlowBusiness implements BetterjrEntity {
     @Column(name = "C_ORDER_ID",  columnDefinition="VARCHAR" )
     private String orderId;
 
-    @Column(name = "L_BUSINESS_ID",  columnDefinition="INTEGER" )
-    private Long businessId;
+    @Column(name = "L_BUSINESS_ID",  columnDefinition="VARCHAR" )
+    private String businessId;
 
     @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
     private Long baseId;
@@ -80,11 +80,11 @@ public class WorkFlowBusiness implements BetterjrEntity {
         this.orderId = orderId;
     }
 
-    public Long getBusinessId() {
+    public String getBusinessId() {
         return businessId;
     }
 
-    public void setBusinessId(final Long businessId) {
+    public void setBusinessId(final String businessId) {
         this.businessId = businessId;
     }
 
