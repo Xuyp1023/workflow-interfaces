@@ -99,12 +99,16 @@ public class WorkFlowWorkItem implements Serializable {
      */
     private final String operator;
 
+    private final String[] actors;
+
+    private final String[] actorNames;
+
     private final WorkFlowBase workFlowBase; // 流程定义
     private final WorkFlowNode workFlowNode; // 流程节点
     private final WorkFlowStep workFlowStep; // 流程步骤
     private final WorkFlowBusiness workFlowBusiness; // 流程业务
 
-    public WorkFlowWorkItem(final WorkItem workItem, final WorkFlowBase workFlowBase, final WorkFlowNode workFlowNode,
+    public WorkFlowWorkItem(final WorkItem workItem, final String[] actors, final String[] actorNames, final WorkFlowBase workFlowBase, final WorkFlowNode workFlowNode,
             final WorkFlowStep workFlowStep, final WorkFlowBusiness workFlowBusiness) {
         this.processId = workItem.getProcessId();
         this.orderId = workItem.getOrderId();
@@ -124,6 +128,8 @@ public class WorkFlowWorkItem implements Serializable {
         this.taskEndTime = workItem.getTaskEndTime();
         this.taskExpireTime = workItem.getTaskExpireTime();
         this.operator = workItem.getOperator();
+        this.actors = actors;
+        this.actorNames = actorNames;
 
         this.workFlowBase = workFlowBase;
         this.workFlowNode = workFlowNode;
@@ -221,5 +227,13 @@ public class WorkFlowWorkItem implements Serializable {
 
     public WorkFlowBusiness getWorkFlowBusiness() {
         return workFlowBusiness;
+    }
+
+    public String[] getActors() {
+        return actors;
+    }
+
+    public String[] getActorNames() {
+        return actorNames;
     }
 }

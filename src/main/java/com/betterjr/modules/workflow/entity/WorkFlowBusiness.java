@@ -29,6 +29,12 @@ public class WorkFlowBusiness implements BetterjrEntity {
     @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
     private Long baseId;
 
+    @Column(name = "L_CUSTNO",  columnDefinition="INTEGER" )
+    private Long custNo;
+
+    @Column(name = "C_CUSTNAME",  columnDefinition="VARCHAR" )
+    private String custName;
+
     @Column(name = "C_BUSINESS_TYPE",  columnDefinition="CHAR" )
     private String businessType;
 
@@ -94,6 +100,22 @@ public class WorkFlowBusiness implements BetterjrEntity {
 
     public void setBaseId(final Long baseId) {
         this.baseId = baseId;
+    }
+
+    public Long getCustNo() {
+        return custNo;
+    }
+
+    public void setCustNo(final Long anCustNo) {
+        custNo = anCustNo;
+    }
+
+    public String getCustName() {
+        return custName;
+    }
+
+    public void setCustName(final String anCustName) {
+        custName = anCustName;
     }
 
     public String getBusinessType() {
@@ -194,6 +216,8 @@ public class WorkFlowBusiness implements BetterjrEntity {
         sb.append(", orderId=").append(orderId);
         sb.append(", businessId=").append(businessId);
         sb.append(", baseId=").append(baseId);
+        sb.append(", custNo=").append(custNo);
+        sb.append(", custName=").append(custName);
         sb.append(", businessType=").append(businessType);
         sb.append(", regOperId=").append(regOperId);
         sb.append(", regOperName=").append(regOperName);
@@ -226,6 +250,8 @@ public class WorkFlowBusiness implements BetterjrEntity {
                 && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
                 && (this.getBusinessId() == null ? other.getBusinessId() == null : this.getBusinessId().equals(other.getBusinessId()))
                 && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
+                && (this.getCustNo() == null ? other.getCustNo() == null : this.getCustNo().equals(other.getCustNo()))
+                && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
                 && (this.getBusinessType() == null ? other.getBusinessType() == null : this.getBusinessType().equals(other.getBusinessType()))
                 && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
                 && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
@@ -247,6 +273,8 @@ public class WorkFlowBusiness implements BetterjrEntity {
         result = prime * result + ((getOrderId() == null) ? 0 : getOrderId().hashCode());
         result = prime * result + ((getBusinessId() == null) ? 0 : getBusinessId().hashCode());
         result = prime * result + ((getBaseId() == null) ? 0 : getBaseId().hashCode());
+        result = prime * result + ((getCustNo() == null) ? 0 : getCustNo().hashCode());
+        result = prime * result + ((getCustName() == null) ? 0 : getCustName().hashCode());
         result = prime * result + ((getBusinessType() == null) ? 0 : getBusinessType().hashCode());
         result = prime * result + ((getRegOperId() == null) ? 0 : getRegOperId().hashCode());
         result = prime * result + ((getRegOperName() == null) ? 0 : getRegOperName().hashCode());
