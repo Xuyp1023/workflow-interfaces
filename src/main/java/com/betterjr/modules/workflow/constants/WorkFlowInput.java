@@ -36,6 +36,8 @@ public class WorkFlowInput {
 
     public static final String FORM_DATA = "formData"; // 依据此项组织 form data   json转Map
 
+    private Long startCustNo;
+
     //// 参与者公司编号
     private Long factorCustNo;
     private Long supplierCustNo;
@@ -62,15 +64,17 @@ public class WorkFlowInput {
 
     /**
      * 启动流程时使用
+     * @param anStartCustNo
      * @param anOperId
      * @param anWorkFlowName
      * @param anWorkFLowCustNo
      * @param anBusinessId
      * @param anBusinessType
      */
-    public WorkFlowInput(final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo, final String anBusinessId,
+    public WorkFlowInput(final Long anStartCustNo, final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo, final String anBusinessId,
             final String anBusinessType) {
         BTAssert.isTrue(anBusinessType.length() == 2, "业务类型必须为2个字符");
+        this.startCustNo = anStartCustNo;
         this.flowName = anWorkFlowName;
         this.flowCustNo = anWorkFLowCustNo;
         this.businessId = anBusinessId;
@@ -148,6 +152,10 @@ public class WorkFlowInput {
             param.put(CREATOR, operId);
         }
         return param;
+    }
+
+    public Long getStartCustNo() {
+        return startCustNo;
     }
 
     public String getFlowName() {

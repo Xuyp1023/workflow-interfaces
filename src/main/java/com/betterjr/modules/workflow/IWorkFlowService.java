@@ -27,6 +27,9 @@ public interface IWorkFlowService {
     // 已办任务
     String webQueryHistoryTask(int anPageNo, int anPageSize, Map<String, Object> anParam);
 
+    // 监控任务
+    String webQueryMonitorTask(long anCustNo, int anPageNo, int anPageSize, Map<String, Object> anParam);
+
     // 加载节点
     String webFindTask(String anTaskId);
 
