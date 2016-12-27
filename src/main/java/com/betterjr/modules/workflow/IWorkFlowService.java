@@ -49,7 +49,7 @@ public interface IWorkFlowService {
     String webSaveWorkFlow(String anTaskId, Map<String, Object> anParam);
 
     // 审批记录
-    String webQueryAudit(String taskId, int anFlag, int anPageNum, int anPageSize);
+    String webQueryAudit(String anBusinessId, int anFlag, int anPageNum, int anPageSize);
 
     // 查询当前可驳回节点列表 第一项为上一步
     String webQueryRejectNode(String taskId);
