@@ -22,10 +22,10 @@ public interface IWorkFlowService {
     WorkFlowBusiness startWorkFlow(WorkFlowInput workFlowInput);
 
     // 待办任务
-    String webQueryCurrentTask(int anPageNo, int anPageSize);
+    String webQueryCurrentTask(int anPageNo, int anPageSize, Map<String, Object> anParam);
 
     // 已办任务
-    String webQueryHistoryTask(int anPageNo, int anPageSize);
+    String webQueryHistoryTask(int anPageNo, int anPageSize, Map<String, Object> anParam);
 
     // 加载节点
     String webFindTask(String anTaskId);
@@ -50,4 +50,7 @@ public interface IWorkFlowService {
 
     // 查询当前可驳回节点列表 第一项为上一步
     String webQueryRejectNode(String taskId);
+
+    // 查询流程layout json数据
+    String webFindWorkFlowJson(String orderId);
 }

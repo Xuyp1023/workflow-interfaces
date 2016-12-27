@@ -7,6 +7,7 @@
 // ============================================================================
 package com.betterjr.modules.workflow.constants;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -20,9 +21,13 @@ import com.betterjr.common.utils.BetterStringUtils;
  * @author liuwl
  *
  */
-public class WorkFlowInput {
+public class WorkFlowInput implements Serializable{
 
-    private String flowName; // 流程名称
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8062248685722292501L;
+	private String flowName; // 流程名称
     private Long flowCustNo; // 流程所属公司
 
     public static final String FACTOR_CUSTNO = "factorCustNo";
