@@ -55,5 +55,8 @@ public interface IWorkFlowService {
     String webQueryRejectNode(String taskId);
 
     // 查询流程layout json数据
-    String webFindWorkFlowJson(String orderId);
+    String webFindWorkFlowJson(String processId, String orderId);
+
+    // 更改操作员
+    String webChangeApprover(String anTaskId, Long anOperId);
 }
