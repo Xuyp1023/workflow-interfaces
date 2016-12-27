@@ -17,6 +17,11 @@
 			<version>1.0.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.betterjr</groupId>
+			<artifactId>scf-interfaces</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax.transaction</groupId>
