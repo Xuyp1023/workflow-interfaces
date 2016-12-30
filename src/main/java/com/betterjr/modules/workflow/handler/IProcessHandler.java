@@ -18,8 +18,14 @@ public interface IProcessHandler {
      * 处理作废
      */
     void processCancel(Map<String, Object> context);
+
     /**
      * 处理结束
      */
     void processEnd(Map<String, Object> context);
+
+    /**
+     * 处理开始
+     */
+    void processStart(Map<String, Object> context);
 }
