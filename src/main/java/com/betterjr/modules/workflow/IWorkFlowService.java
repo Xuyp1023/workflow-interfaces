@@ -59,4 +59,7 @@ public interface IWorkFlowService {
 
     // 更改操作员
     String webChangeApprover(String anTaskId, Long anOperId);
+
+    // 启动流程
+    String webStartWorkFlow(String anWorkFlowName, Long anCustNo, Map<String, Object> anParam);
 }

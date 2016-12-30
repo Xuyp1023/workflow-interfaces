@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.betterjr.common.utils.BTAssert;
 import com.betterjr.common.utils.BetterStringUtils;
@@ -24,12 +25,13 @@ import com.betterjr.common.utils.BetterStringUtils;
 public class WorkFlowInput implements Serializable{
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 8062248685722292501L;
-	private String flowName; // 流程名称
+     *
+     */
+    private static final long serialVersionUID = 8062248685722292501L;
+    private String flowName; // 流程名称
     private Long flowCustNo; // 流程所属公司
 
+    public static final String START_CUSTNO = "startCustNo";
     public static final String FACTOR_CUSTNO = "factorCustNo";
     public static final String SUPPLIER_CUSTNO = "supplierCustNo";
     public static final String CORE_CUSTNO = "coreCustNo";
@@ -76,14 +78,10 @@ public class WorkFlowInput implements Serializable{
      * @param anBusinessId
      * @param anBusinessType
      */
-    public WorkFlowInput(final Long anStartCustNo, final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo, final String anBusinessId,
-            final String anBusinessType) {
-        BTAssert.isTrue(anBusinessType.length() == 2, "业务类型必须为2个字符");
+    public WorkFlowInput(final Long anStartCustNo, final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo) {
         this.startCustNo = anStartCustNo;
         this.flowName = anWorkFlowName;
         this.flowCustNo = anWorkFLowCustNo;
-        this.businessId = anBusinessId;
-        this.businessType = anBusinessType;
         this.operId = anOperId;
         param = new HashMap<>();
     }
@@ -120,6 +118,18 @@ public class WorkFlowInput implements Serializable{
     public void addParam(final String anKey, final Object anValue) {
         checkKey(anKey);
         param.put(anKey, anValue);
+    }
+
+    /**
+     * @param anParam
+     */
+    public void addAllParam(final Map<String, Object> anParam) {
+        final Set<String> keySet = anParam.keySet();
+
+        for (final String key: keySet) {
+            checkKey(key);
+            param.put(key, anParam.get(key));
+        }
     }
 
     /**
@@ -219,6 +229,15 @@ public class WorkFlowInput implements Serializable{
         return businessType;
     }
 
+    public void setBusinessId(final String anBusinessId) {
+        businessId = anBusinessId;
+    }
+
+    public void setBusinessType(final String anBusinessType) {
+        BTAssert.isTrue(anBusinessType.length() == 2, "业务类型必须为2个字符");
+        businessType = anBusinessType;
+    }
+
     public Long getOperId() {
         return operId;
     }
@@ -282,4 +301,6 @@ public class WorkFlowInput implements Serializable{
         BTAssert.notNull(this.getOperId(), "操作员编号不允许为空！");
         BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
     }
+
+
 }
