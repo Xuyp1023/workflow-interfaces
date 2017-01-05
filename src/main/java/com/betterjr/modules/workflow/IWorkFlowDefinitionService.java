@@ -24,6 +24,9 @@ public interface IWorkFlowDefinitionService {
     //查询流程详情
     String webFindWorkFlowBase(Long anBaseId);
 
+    // 查询流程历史版本
+    String webQueryHistoryWorkFlowBase(Long anCustNo, String anWorkFlowName);
+
     //查询流程节点列表
     String webQueryWorkFlowNode(Long anBaseId);
 
@@ -89,4 +92,6 @@ public interface IWorkFlowDefinitionService {
 
     // 查询流程定义
     String webFindWorkFlowStepDefine(final Long anBaseId, final Long anNodeId, final Long anStepId);
+
+
 }
