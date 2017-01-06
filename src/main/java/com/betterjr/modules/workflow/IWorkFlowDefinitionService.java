@@ -16,7 +16,7 @@ import java.util.Map;
 public interface IWorkFlowDefinitionService {
 
     // 基础流程列表
-    String webQueryDefaultWorkFlow();
+    String webQueryDefaultWorkFlow(Long anCustNo);
 
     //查询公司拥有的流程
     String webQueryWorkFlowBase(Long anCustNo, final int anFlag, final int anPageNum, final int anPageSize);
@@ -41,6 +41,9 @@ public interface IWorkFlowDefinitionService {
 
     //添加流程
     String webAddWorkFlowBase(Map<String, Object> anParam, final Long anDefaultBaseId, final Long anCustNo, final String anNickname);
+
+    // 添加新版本
+    String webAddNewVersionWorkFlowBase(final String anWorkFlowName, final Long anCustNo);
 
     //保存流程
     String webSaveWorkFlowBase(Map<String, Object> anParam, final Long anBaseId, final String anNickname);
