@@ -48,6 +48,9 @@ public class WorkFlowBase implements BetterjrEntity {
     @Column(name = "C_FORM", columnDefinition = "VARCHAR")
     private String form;
 
+    @Column(name = "C_WECHAT_FORM", columnDefinition = "VARCHAR")
+    private String wechatForm;
+
     @Column(name = "N_VERSION", columnDefinition = "INTEGER")
     private Long version;
 
@@ -158,6 +161,14 @@ public class WorkFlowBase implements BetterjrEntity {
 
     public void setForm(final String anForm) {
         form = anForm;
+    }
+
+    public String getWechatForm() {
+        return wechatForm;
+    }
+
+    public void setWechatForm(final String anWechatForm) {
+        wechatForm = anWechatForm;
     }
 
     public String getOperOrg() {
@@ -343,6 +354,7 @@ public class WorkFlowBase implements BetterjrEntity {
         sb.append(", custName=").append(custName);
         sb.append(", handler=").append(handler);
         sb.append(", form=").append(form);
+        sb.append(", wechatForm=").append(wechatForm);
         sb.append(", version=").append(version);
         sb.append(", isLatest=").append(isLatest);
         sb.append(", isPublished=").append(isPublished);
@@ -388,6 +400,7 @@ public class WorkFlowBase implements BetterjrEntity {
                 && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
                 && (this.getHandler() == null ? other.getHandler() == null : this.getHandler().equals(other.getHandler()))
                 && (this.getForm() == null ? other.getForm() == null : this.getForm().equals(other.getForm()))
+                && (this.getWechatForm() == null ? other.getWechatForm() == null : this.getWechatForm().equals(other.getWechatForm()))
                 && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()))
                 && (this.getIsLatest() == null ? other.getIsLatest() == null : this.getIsLatest().equals(other.getIsLatest()))
                 && (this.getIsPublished() == null ? other.getIsPublished() == null : this.getIsPublished().equals(other.getIsPublished()))
@@ -422,6 +435,7 @@ public class WorkFlowBase implements BetterjrEntity {
         result = prime * result + ((getCustName() == null) ? 0 : getCustName().hashCode());
         result = prime * result + ((getHandler() == null) ? 0 : getHandler().hashCode());
         result = prime * result + ((getForm() == null) ? 0 : getForm().hashCode());
+        result = prime * result + ((getWechatForm() == null) ? 0 : getWechatForm().hashCode());
         result = prime * result + ((getVersion() == null) ? 0 : getVersion().hashCode());
         result = prime * result + ((getIsLatest() == null) ? 0 : getIsLatest().hashCode());
         result = prime * result + ((getIsPublished() == null) ? 0 : getIsPublished().hashCode());
@@ -457,6 +471,7 @@ public class WorkFlowBase implements BetterjrEntity {
 
         this.handler = anWorkFlowBaseDefault.getHandler();
         this.form = anWorkFlowBaseDefault.getForm();
+        this.wechatForm = anWorkFlowBaseDefault.getWechatForm();
 
         this.isDefault = WorkFlowConstants.NOT_DEFAULT;
         this.isPublished = WorkFlowConstants.NOT_PUBLISHED;
