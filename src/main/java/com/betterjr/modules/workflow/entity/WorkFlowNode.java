@@ -42,6 +42,9 @@ public class WorkFlowNode implements BetterjrEntity {
     @Column(name = "C_FORM",  columnDefinition="VARCHAR" )
     private String form;
 
+    @Column(name = "C_WECHAT_FORM",  columnDefinition="VARCHAR" )
+    private String wechatForm;
+
     @Column(name = "C_TYPE",  columnDefinition="CHAR" )
     private String type;
 
@@ -168,6 +171,14 @@ public class WorkFlowNode implements BetterjrEntity {
         this.form = form;
     }
 
+    public String getWechatForm() {
+        return wechatForm;
+    }
+
+    public void setWechatForm(final String anWechatForm) {
+        wechatForm = anWechatForm;
+    }
+
     public String getType() {
         return type;
     }
@@ -286,6 +297,7 @@ public class WorkFlowNode implements BetterjrEntity {
         sb.append(", isDisabled=").append(isDisabled);
         sb.append(", handler=").append(handler);
         sb.append(", form=").append(form);
+        sb.append(", wechatForm=").append(wechatForm);
         sb.append(", type=").append(type);
         sb.append(", operRole=").append(operRole);
         sb.append(", moneyVariable=").append(moneyVariable);
@@ -324,6 +336,7 @@ public class WorkFlowNode implements BetterjrEntity {
                 && (this.getIsDisabled() == null ? other.getIsDisabled() == null : this.getIsDisabled().equals(other.getIsDisabled()))
                 && (this.getHandler() == null ? other.getHandler() == null : this.getHandler().equals(other.getHandler()))
                 && (this.getForm() == null ? other.getForm() == null : this.getForm().equals(other.getForm()))
+                && (this.getWechatForm() == null ? other.getWechatForm() == null : this.getWechatForm().equals(other.getWechatForm()))
                 && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
                 && (this.getOperRole() == null ? other.getOperRole() == null : this.getOperRole().equals(other.getOperRole()))
                 && (this.getMoneyVariable() == null ? other.getMoneyVariable() == null : this.getMoneyVariable().equals(other.getMoneyVariable()))
@@ -351,6 +364,7 @@ public class WorkFlowNode implements BetterjrEntity {
         result = prime * result + ((getIsDisabled() == null) ? 0 : getIsDisabled().hashCode());
         result = prime * result + ((getHandler() == null) ? 0 : getHandler().hashCode());
         result = prime * result + ((getForm() == null) ? 0 : getForm().hashCode());
+        result = prime * result + ((getWechatForm() == null) ? 0 : getWechatForm().hashCode());
         result = prime * result + ((getType() == null) ? 0 : getType().hashCode());
         result = prime * result + ((getOperRole() == null) ? 0 : getOperRole().hashCode());
         result = prime * result + ((getMoneyVariable() == null) ? 0 : getMoneyVariable().hashCode());
@@ -376,6 +390,7 @@ public class WorkFlowNode implements BetterjrEntity {
         this.seq = anTempWorkFlowNode.getSeq();
         this.type = anTempWorkFlowNode.getType();
         this.form = anTempWorkFlowNode.getForm();
+        this.wechatForm = anTempWorkFlowNode.getWechatForm();
         this.handler = anTempWorkFlowNode.getHandler();
         this.name = anTempWorkFlowNode.getName();
         this.nickname = anTempWorkFlowNode.getNickname();
