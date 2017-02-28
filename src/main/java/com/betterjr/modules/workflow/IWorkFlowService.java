@@ -3,7 +3,8 @@
 // CURRENT VERSION
 // ============================================================================
 // CHANGE LOG
-// V2.0 : 2016年11月14日, liuwl, creation
+// V2.2 : 2017年2月27日，liuwl, task-170
+// V2.2 : 2016年11月14日, liuwl, creation
 // ============================================================================
 package com.betterjr.modules.workflow;
 
@@ -62,4 +63,7 @@ public interface IWorkFlowService {
 
     // 启动流程
     String webStartWorkFlow(String anWorkFlowName, Long anCustNo, Map<String, Object> anParam);
+
+    // 查询当前待办任务数量
+    String webQueryCurrentTaskCount();
 }
