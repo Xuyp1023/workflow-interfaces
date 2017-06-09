@@ -22,5 +22,7 @@ public interface WorkFlowBusinessType {
     String SUPPLIER_FINANCING_REQUEST = "03";
     
     String SELLER_FINANCING_REQUEST = "04";
+    
+    String RECE_FINANCING_REQUEST = "05";
 
 }
