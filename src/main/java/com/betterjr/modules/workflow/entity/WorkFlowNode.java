@@ -18,70 +18,70 @@ import com.betterjr.common.utils.UserUtils;
 @Table(name = "t_sys_wf_node")
 public class WorkFlowNode implements BetterjrEntity {
     @Id
-    @Column(name = "ID",  columnDefinition="INTEGER" )
+    @Column(name = "ID", columnDefinition = "INTEGER")
     private Long id;
 
-    @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_BASE_ID", columnDefinition = "INTEGER")
     private Long baseId;
 
-    @Column(name = "N_SEQ",  columnDefinition="INTEGER" )
+    @Column(name = "N_SEQ", columnDefinition = "INTEGER")
     private Integer seq;
 
-    @Column(name = "C_NAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_NAME", columnDefinition = "VARCHAR")
     private String name;
 
-    @Column(name = "C_NICKNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_NICKNAME", columnDefinition = "VARCHAR")
     private String nickname;
 
-    @Column(name = "C_IS_DISABLED",  columnDefinition="VARCHAR" )
+    @Column(name = "C_IS_DISABLED", columnDefinition = "VARCHAR")
     private String isDisabled;
 
-    @Column(name = "C_HANDLER",  columnDefinition="VARCHAR" )
+    @Column(name = "C_HANDLER", columnDefinition = "VARCHAR")
     private String handler;
 
-    @Column(name = "C_FORM",  columnDefinition="VARCHAR" )
+    @Column(name = "C_FORM", columnDefinition = "VARCHAR")
     private String form;
 
-    @Column(name = "C_WECHAT_FORM",  columnDefinition="VARCHAR" )
+    @Column(name = "C_WECHAT_FORM", columnDefinition = "VARCHAR")
     private String wechatForm;
 
-    @Column(name = "C_TYPE",  columnDefinition="CHAR" )
+    @Column(name = "C_TYPE", columnDefinition = "CHAR")
     private String type;
 
-    @Column(name = "C_OPERROLE",  columnDefinition="VARCHAR" )
+    @Column(name = "C_OPERROLE", columnDefinition = "VARCHAR")
     private String operRole;
 
-    @Column(name = "C_MONEY_VARIABLE",  columnDefinition="VARCHAR" )
+    @Column(name = "C_MONEY_VARIABLE", columnDefinition = "VARCHAR")
     private String moneyVariable;
 
-    @Column(name = "L_REG_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_REG_OPERID", columnDefinition = "INTEGER")
     private Long regOperId;
 
-    @Column(name = "C_REG_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_REG_OPERNAME", columnDefinition = "VARCHAR")
     private String regOperName;
 
-    @Column(name = "D_REG_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_REG_DATE", columnDefinition = "VARCHAR")
     private String regDate;
 
-    @Column(name = "T_REG_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_REG_TIME", columnDefinition = "VARCHAR")
     private String regTime;
 
-    @Column(name = "L_MODI_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_MODI_OPERID", columnDefinition = "INTEGER")
     private Long modiOperId;
 
-    @Column(name = "C_MODI_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_MODI_OPERNAME", columnDefinition = "VARCHAR")
     private String modiOperName;
 
-    @Column(name = "D_MODI_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_MODI_DATE", columnDefinition = "VARCHAR")
     private String modiDate;
 
-    @Column(name = "T_MODI_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_MODI_TIME", columnDefinition = "VARCHAR")
     private String modiTime;
 
-    @Column(name = "C_BUSIN_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_BUSIN_STATUS", columnDefinition = "VARCHAR")
     private String businStatus;
 
-    @Column(name = "C_LAST_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_LAST_STATUS", columnDefinition = "VARCHAR")
     private String lastStatus;
 
     private static final long serialVersionUID = 1479349929430L;
@@ -332,24 +332,40 @@ public class WorkFlowNode implements BetterjrEntity {
                 && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
                 && (this.getSeq() == null ? other.getSeq() == null : this.getSeq().equals(other.getSeq()))
                 && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-                && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
-                && (this.getIsDisabled() == null ? other.getIsDisabled() == null : this.getIsDisabled().equals(other.getIsDisabled()))
-                && (this.getHandler() == null ? other.getHandler() == null : this.getHandler().equals(other.getHandler()))
+                && (this.getNickname() == null ? other.getNickname() == null
+                        : this.getNickname().equals(other.getNickname()))
+                && (this.getIsDisabled() == null ? other.getIsDisabled() == null
+                        : this.getIsDisabled().equals(other.getIsDisabled()))
+                && (this.getHandler() == null ? other.getHandler() == null
+                        : this.getHandler().equals(other.getHandler()))
                 && (this.getForm() == null ? other.getForm() == null : this.getForm().equals(other.getForm()))
-                && (this.getWechatForm() == null ? other.getWechatForm() == null : this.getWechatForm().equals(other.getWechatForm()))
+                && (this.getWechatForm() == null ? other.getWechatForm() == null
+                        : this.getWechatForm().equals(other.getWechatForm()))
                 && (this.getType() == null ? other.getType() == null : this.getType().equals(other.getType()))
-                && (this.getOperRole() == null ? other.getOperRole() == null : this.getOperRole().equals(other.getOperRole()))
-                && (this.getMoneyVariable() == null ? other.getMoneyVariable() == null : this.getMoneyVariable().equals(other.getMoneyVariable()))
-                && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
-                && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
-                && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
-                && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
-                && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
-                && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
-                && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
-                && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
-                && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
-                && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
+                && (this.getOperRole() == null ? other.getOperRole() == null
+                        : this.getOperRole().equals(other.getOperRole()))
+                && (this.getMoneyVariable() == null ? other.getMoneyVariable() == null
+                        : this.getMoneyVariable().equals(other.getMoneyVariable()))
+                && (this.getRegOperId() == null ? other.getRegOperId() == null
+                        : this.getRegOperId().equals(other.getRegOperId()))
+                && (this.getRegOperName() == null ? other.getRegOperName() == null
+                        : this.getRegOperName().equals(other.getRegOperName()))
+                && (this.getRegDate() == null ? other.getRegDate() == null
+                        : this.getRegDate().equals(other.getRegDate()))
+                && (this.getRegTime() == null ? other.getRegTime() == null
+                        : this.getRegTime().equals(other.getRegTime()))
+                && (this.getModiOperId() == null ? other.getModiOperId() == null
+                        : this.getModiOperId().equals(other.getModiOperId()))
+                && (this.getModiOperName() == null ? other.getModiOperName() == null
+                        : this.getModiOperName().equals(other.getModiOperName()))
+                && (this.getModiDate() == null ? other.getModiDate() == null
+                        : this.getModiDate().equals(other.getModiDate()))
+                && (this.getModiTime() == null ? other.getModiTime() == null
+                        : this.getModiTime().equals(other.getModiTime()))
+                && (this.getBusinStatus() == null ? other.getBusinStatus() == null
+                        : this.getBusinStatus().equals(other.getBusinStatus()))
+                && (this.getLastStatus() == null ? other.getLastStatus() == null
+                        : this.getLastStatus().equals(other.getLastStatus()));
     }
 
     @Override

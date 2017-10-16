@@ -20,14 +20,17 @@ public interface INodeHandler {
      * 处理通过
      */
     void processPass(Map<String, Object> context);
+
     /**
      * 处理驳回
      */
     void processReject(Map<String, Object> context);
+
     /**
      * 处理办理
      */
     void processHandle(Map<String, Object> context);
+
     /**
      * 处理保存
      */

@@ -18,11 +18,11 @@ public interface WorkFlowBusinessType {
 
     // 供应商订单融资
     String SUPPLIER_ORDER_FINANCING = "02";
-    
+
     String SUPPLIER_FINANCING_REQUEST = "03";
-    
+
     String SELLER_FINANCING_REQUEST = "04";
-    
+
     String RECE_FINANCING_REQUEST = "05";
 
 }

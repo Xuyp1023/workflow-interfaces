@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.betterjr.common.utils.BTAssert;
 import com.betterjr.common.utils.BetterStringUtils;
 
@@ -22,7 +24,7 @@ import com.betterjr.common.utils.BetterStringUtils;
  * @author liuwl
  *
  */
-public class WorkFlowInput implements Serializable{
+public class WorkFlowInput implements Serializable {
 
     /**
      *
@@ -41,7 +43,7 @@ public class WorkFlowInput implements Serializable{
     public static final String BUSINESS_TYPE = "businessType";
     public static final String CREATOR = "creator";
 
-    public static final String FORM_DATA = "formData"; // 依据此项组织 form data   json转Map
+    public static final String FORM_DATA = "formData"; // 依据此项组织 form data json转Map
 
     private Long startCustNo;
 
@@ -78,7 +80,8 @@ public class WorkFlowInput implements Serializable{
      * @param anBusinessId
      * @param anBusinessType
      */
-    public WorkFlowInput(final Long anStartCustNo, final Long anOperId, final String anWorkFlowName, final Long anWorkFLowCustNo) {
+    public WorkFlowInput(final Long anStartCustNo, final Long anOperId, final String anWorkFlowName,
+            final Long anWorkFLowCustNo) {
         this.startCustNo = anStartCustNo;
         this.flowName = anWorkFlowName;
         this.flowCustNo = anWorkFLowCustNo;
@@ -126,7 +129,7 @@ public class WorkFlowInput implements Serializable{
     public void addAllParam(final Map<String, Object> anParam) {
         final Set<String> keySet = anParam.keySet();
 
-        for (final String key: keySet) {
+        for (final String key : keySet) {
             checkKey(key);
             param.put(key, anParam.get(key));
         }
@@ -136,8 +139,8 @@ public class WorkFlowInput implements Serializable{
      * @param anKey
      */
     private void checkKey(final String anKey) {
-        final List<String> keys = Arrays.asList(FACTOR_CUSTNO, SUPPLIER_CUSTNO, CORE_CUSTNO, SELLER_CUSTNO, PLATFORM_CUSTNO, BUSINESS_ID,
-                BUSINESS_TYPE, CREATOR);
+        final List<String> keys = Arrays.asList(FACTOR_CUSTNO, SUPPLIER_CUSTNO, CORE_CUSTNO, SELLER_CUSTNO,
+                PLATFORM_CUSTNO, BUSINESS_ID, BUSINESS_TYPE, CREATOR);
         BTAssert.isTrue(keys.contains(anKey) == false, "不允许使用当前key值作参数");
     }
 
@@ -274,7 +277,7 @@ public class WorkFlowInput implements Serializable{
      * 检查启动参数
      */
     public void checkStartParam() {
-        BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getFlowName()), "流程名称不允许为空！");
+        BTAssert.isTrue(StringUtils.isNotBlank(this.getFlowName()), "流程名称不允许为空！");
         BTAssert.notNull(this.getFlowCustNo(), "流程所属公司编号不允许为空！");
     }
 
@@ -283,7 +286,7 @@ public class WorkFlowInput implements Serializable{
      */
     public void checkPassParam() {
         BTAssert.notNull(this.getOperId(), "操作员编号不允许为空！");
-        BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
+        BTAssert.isTrue(StringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
     }
 
     /**
@@ -291,7 +294,7 @@ public class WorkFlowInput implements Serializable{
      */
     public void checkRejectTask() {
         BTAssert.notNull(this.getOperId(), "操作员编号不允许为空！");
-        BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
+        BTAssert.isTrue(StringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
     }
 
     /**
@@ -299,8 +302,7 @@ public class WorkFlowInput implements Serializable{
      */
     public void checkCancelProcess() {
         BTAssert.notNull(this.getOperId(), "操作员编号不允许为空！");
-        BTAssert.isTrue(BetterStringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
+        BTAssert.isTrue(StringUtils.isNotBlank(this.getTaskId()), "任务编号不允许为空！");
     }
-
 
 }
