@@ -18,61 +18,64 @@ public interface IWorkFlowDefinitionService {
     // 基础流程列表
     String webQueryDefaultWorkFlow(Long anCustNo);
 
-    //查询公司拥有的流程
+    // 查询公司拥有的流程
     String webQueryWorkFlowBase(Long anCustNo, final int anFlag, final int anPageNum, final int anPageSize);
 
-    //查询流程详情
+    // 查询流程详情
     String webFindWorkFlowBase(Long anBaseId);
 
     // 查询流程历史版本
     String webQueryHistoryWorkFlowBase(Long anCustNo, String anWorkFlowName);
 
-    //查询流程节点列表
+    // 查询流程节点列表
     String webQueryWorkFlowNode(Long anBaseId);
 
-    //查询流程节点详情
+    // 查询流程节点详情
     String webFindWorkFlowNode(Long anNodeId);
 
-    //查询流程节点步骤
+    // 查询流程节点步骤
     String webQueryWorkFlowStep(Long anNodeId);
 
-    //查询流程节点详情
+    // 查询流程节点详情
     String webFindWorkFlowStep(Long anStepId);
 
-    //添加流程
-    String webAddWorkFlowBase(Map<String, Object> anParam, final Long anDefaultBaseId, final Long anCustNo, final String anNickname);
+    // 添加流程
+    String webAddWorkFlowBase(Map<String, Object> anParam, final Long anDefaultBaseId, final Long anCustNo,
+            final String anNickname);
 
     // 添加新版本
     String webAddNewVersionWorkFlowBase(final String anWorkFlowName, final Long anCustNo);
 
-    //保存流程
+    // 保存流程
     String webSaveWorkFlowBase(Map<String, Object> anParam, final Long anBaseId, final String anNickname);
 
-    //添加流程审批步骤
+    // 添加流程审批步骤
     String webAddWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId, String anNickname);
 
-    //修改流程审批步骤
-    String webSaveWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId, final Long anStepId);
+    // 修改流程审批步骤
+    String webSaveWorkFlowStep(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId,
+            final Long anStepId);
 
-    //删除流程步骤
+    // 删除流程步骤
     String webDelWorkFlowStep(final Long anBaseId, final Long anNodeId, final Long anStepId);
 
-    //保存流程定义
-    String webSaveWorkFlowStepDefine(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId, final Long anStepId);
+    // 保存流程定义
+    String webSaveWorkFlowStepDefine(Map<String, Object> anParam, final Long anBaseId, final Long anNodeId,
+            final Long anStepId);
 
-    //停用流程
+    // 停用流程
     String webSaveDisableWorkFlow(Long anBaseId);
 
-    //启用流程
+    // 启用流程
     String webSaveEnableWorkFlow(Long anBaseId);
 
-    //停用流程节点
+    // 停用流程节点
     String webSaveDisableWorkFlowNode(Long anBaseId, Long anNodeId);
 
-    //启用流程节点
+    // 启用流程节点
     String webSaveEnableWorkFlowNode(Long anBaseId, Long anNodeId);
 
-    //发布流程
+    // 发布流程
     String webSavePublishWorkFlow(Long anBaseId);
 
     // 查询金额段
@@ -95,6 +98,5 @@ public interface IWorkFlowDefinitionService {
 
     // 查询流程定义
     String webFindWorkFlowStepDefine(final Long anBaseId, final Long anNodeId, final Long anStepId);
-
 
 }

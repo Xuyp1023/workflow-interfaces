@@ -234,6 +234,7 @@ public class WorkFlowBase implements BetterjrEntity {
     public void setIsDisabled(final String isDisabled) {
         this.isDisabled = isDisabled;
     }
+
     public String getIsSubprocess() {
         return isSubprocess;
     }
@@ -391,34 +392,59 @@ public class WorkFlowBase implements BetterjrEntity {
         }
         final WorkFlowBase other = (WorkFlowBase) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-                && (this.getCategoryId() == null ? other.getCategoryId() == null : this.getCategoryId().equals(other.getCategoryId()))
+                && (this.getCategoryId() == null ? other.getCategoryId() == null
+                        : this.getCategoryId().equals(other.getCategoryId()))
                 && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-                && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
-                && (this.getOperRole() == null ? other.getOperRole() == null : this.getOperRole().equals(other.getOperRole()))
-                && (this.getOperOrg() == null ? other.getOperOrg() == null : this.getOperOrg().equals(other.getOperOrg()))
+                && (this.getNickname() == null ? other.getNickname() == null
+                        : this.getNickname().equals(other.getNickname()))
+                && (this.getOperRole() == null ? other.getOperRole() == null
+                        : this.getOperRole().equals(other.getOperRole()))
+                && (this.getOperOrg() == null ? other.getOperOrg() == null
+                        : this.getOperOrg().equals(other.getOperOrg()))
                 && (this.getCustNo() == null ? other.getCustNo() == null : this.getCustNo().equals(other.getCustNo()))
-                && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
-                && (this.getHandler() == null ? other.getHandler() == null : this.getHandler().equals(other.getHandler()))
+                && (this.getCustName() == null ? other.getCustName() == null
+                        : this.getCustName().equals(other.getCustName()))
+                && (this.getHandler() == null ? other.getHandler() == null
+                        : this.getHandler().equals(other.getHandler()))
                 && (this.getForm() == null ? other.getForm() == null : this.getForm().equals(other.getForm()))
-                && (this.getWechatForm() == null ? other.getWechatForm() == null : this.getWechatForm().equals(other.getWechatForm()))
-                && (this.getVersion() == null ? other.getVersion() == null : this.getVersion().equals(other.getVersion()))
-                && (this.getIsLatest() == null ? other.getIsLatest() == null : this.getIsLatest().equals(other.getIsLatest()))
-                && (this.getIsPublished() == null ? other.getIsPublished() == null : this.getIsPublished().equals(other.getIsPublished()))
-                && (this.getIsDefault() == null ? other.getIsDefault() == null : this.getIsDefault().equals(other.getIsDefault()))
-                && (this.getIsDisabled() == null ? other.getIsDisabled() == null : this.getIsDisabled().equals(other.getIsDisabled()))
-                && (this.getIsSubprocess() == null ? other.getIsSubprocess() == null : this.getIsSubprocess().equals(other.getIsSubprocess()))
-                && (this.getProcessId() == null ? other.getProcessId() == null : this.getProcessId().equals(other.getProcessId()))
-                && (this.getMoneyVariable() == null ? other.getMoneyVariable() == null : this.getMoneyVariable().equals(other.getMoneyVariable()))
-                && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
-                && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
-                && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
-                && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
-                && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
-                && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
-                && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
-                && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
-                && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
-                && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
+                && (this.getWechatForm() == null ? other.getWechatForm() == null
+                        : this.getWechatForm().equals(other.getWechatForm()))
+                && (this.getVersion() == null ? other.getVersion() == null
+                        : this.getVersion().equals(other.getVersion()))
+                && (this.getIsLatest() == null ? other.getIsLatest() == null
+                        : this.getIsLatest().equals(other.getIsLatest()))
+                && (this.getIsPublished() == null ? other.getIsPublished() == null
+                        : this.getIsPublished().equals(other.getIsPublished()))
+                && (this.getIsDefault() == null ? other.getIsDefault() == null
+                        : this.getIsDefault().equals(other.getIsDefault()))
+                && (this.getIsDisabled() == null ? other.getIsDisabled() == null
+                        : this.getIsDisabled().equals(other.getIsDisabled()))
+                && (this.getIsSubprocess() == null ? other.getIsSubprocess() == null
+                        : this.getIsSubprocess().equals(other.getIsSubprocess()))
+                && (this.getProcessId() == null ? other.getProcessId() == null
+                        : this.getProcessId().equals(other.getProcessId()))
+                && (this.getMoneyVariable() == null ? other.getMoneyVariable() == null
+                        : this.getMoneyVariable().equals(other.getMoneyVariable()))
+                && (this.getRegOperId() == null ? other.getRegOperId() == null
+                        : this.getRegOperId().equals(other.getRegOperId()))
+                && (this.getRegOperName() == null ? other.getRegOperName() == null
+                        : this.getRegOperName().equals(other.getRegOperName()))
+                && (this.getRegDate() == null ? other.getRegDate() == null
+                        : this.getRegDate().equals(other.getRegDate()))
+                && (this.getRegTime() == null ? other.getRegTime() == null
+                        : this.getRegTime().equals(other.getRegTime()))
+                && (this.getModiOperId() == null ? other.getModiOperId() == null
+                        : this.getModiOperId().equals(other.getModiOperId()))
+                && (this.getModiOperName() == null ? other.getModiOperName() == null
+                        : this.getModiOperName().equals(other.getModiOperName()))
+                && (this.getModiDate() == null ? other.getModiDate() == null
+                        : this.getModiDate().equals(other.getModiDate()))
+                && (this.getModiTime() == null ? other.getModiTime() == null
+                        : this.getModiTime().equals(other.getModiTime()))
+                && (this.getBusinStatus() == null ? other.getBusinStatus() == null
+                        : this.getBusinStatus().equals(other.getBusinStatus()))
+                && (this.getLastStatus() == null ? other.getLastStatus() == null
+                        : this.getLastStatus().equals(other.getLastStatus()));
     }
 
     @Override

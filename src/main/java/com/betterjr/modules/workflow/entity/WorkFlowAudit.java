@@ -22,95 +22,95 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name = "t_sys_wf_audit")
 public class WorkFlowAudit implements BetterjrEntity {
     @Id
-    @Column(name = "ID",  columnDefinition="INTEGER" )
+    @Column(name = "ID", columnDefinition = "INTEGER")
     private Long id;
 
-    @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_BASE_ID", columnDefinition = "INTEGER")
     private Long baseId;
 
     @Transient
     private String baseName;
 
-    @Column(name = "L_NODE_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_NODE_ID", columnDefinition = "INTEGER")
     private Long nodeId;
 
     @Transient
     private String nodeName;
 
-    @Column(name = "L_STEP_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_STEP_ID", columnDefinition = "INTEGER")
     private Long stepId;
 
     @Transient
     private String stepName;
 
-    @Column(name = "L_BUSINESS_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_BUSINESS_ID", columnDefinition = "INTEGER")
     private Long businessId;
 
-    @Column(name = "C_ORDER_ID",  columnDefinition="VARCHAR" )
+    @Column(name = "C_ORDER_ID", columnDefinition = "VARCHAR")
     private String orderId;
 
-    @Column(name = "C_TASK_ID",  columnDefinition="VARCHAR" )
+    @Column(name = "C_TASK_ID", columnDefinition = "VARCHAR")
     private String taskId;
 
-    @Column(name = "L_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_OPERID", columnDefinition = "INTEGER")
     private Long operId;
 
-    @Column(name = "C_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_OPERNAME", columnDefinition = "VARCHAR")
     private String operName;
 
-    @Column(name = "L_CUSTNO",  columnDefinition="INTEGER" )
+    @Column(name = "L_CUSTNO", columnDefinition = "INTEGER")
     private Long custNo;
 
-    @Column(name = "L_CUSTNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "L_CUSTNAME", columnDefinition = "VARCHAR")
     private String custName;
 
-    @Column(name = "C_OPERORG",  columnDefinition="VARCHAR" )
+    @Column(name = "C_OPERORG", columnDefinition = "VARCHAR")
     private String operOrg;
 
     @JsonSerialize(using = CustDateJsonSerializer.class)
     @OrderBy("DESC")
-    @Column(name = "D_AUDIT_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_AUDIT_DATE", columnDefinition = "VARCHAR")
     private String auditDate;
 
     @JsonSerialize(using = CustTimeJsonSerializer.class)
     @OrderBy("DESC")
-    @Column(name = "T_AUDIT_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_AUDIT_TIME", columnDefinition = "VARCHAR")
     private String auditTime;
 
-    @Column(name = "C_AUDIT_CONTENT",  columnDefinition="VARCHAR" )
+    @Column(name = "C_AUDIT_CONTENT", columnDefinition = "VARCHAR")
     private String auditContent;
 
-    @Column(name = "C_AUDIT_RESULT",  columnDefinition="CHAR" )
+    @Column(name = "C_AUDIT_RESULT", columnDefinition = "CHAR")
     private String auditResult;
 
-    @Column(name = "L_REG_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_REG_OPERID", columnDefinition = "INTEGER")
     private Long regOperId;
 
-    @Column(name = "C_REG_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_REG_OPERNAME", columnDefinition = "VARCHAR")
     private String regOperName;
 
-    @Column(name = "D_REG_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_REG_DATE", columnDefinition = "VARCHAR")
     private String regDate;
 
-    @Column(name = "T_REG_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_REG_TIME", columnDefinition = "VARCHAR")
     private String regTime;
 
-    @Column(name = "L_MODI_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_MODI_OPERID", columnDefinition = "INTEGER")
     private Long modiOperId;
 
-    @Column(name = "C_MODI_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_MODI_OPERNAME", columnDefinition = "VARCHAR")
     private String modiOperName;
 
-    @Column(name = "D_MODI_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_MODI_DATE", columnDefinition = "VARCHAR")
     private String modiDate;
 
-    @Column(name = "T_MODI_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_MODI_TIME", columnDefinition = "VARCHAR")
     private String modiTime;
 
-    @Column(name = "C_BUSIN_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_BUSIN_STATUS", columnDefinition = "VARCHAR")
     private String businStatus;
 
-    @Column(name = "C_LAST_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_LAST_STATUS", columnDefinition = "VARCHAR")
     private String lastStatus;
 
     private static final long serialVersionUID = 1479349929435L;
@@ -400,28 +400,47 @@ public class WorkFlowAudit implements BetterjrEntity {
                 && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
                 && (this.getNodeId() == null ? other.getNodeId() == null : this.getNodeId().equals(other.getNodeId()))
                 && (this.getStepId() == null ? other.getStepId() == null : this.getStepId().equals(other.getStepId()))
-                && (this.getBusinessId() == null ? other.getBusinessId() == null : this.getBusinessId().equals(other.getBusinessId()))
-                && (this.getOrderId() == null ? other.getOrderId() == null : this.getOrderId().equals(other.getOrderId()))
+                && (this.getBusinessId() == null ? other.getBusinessId() == null
+                        : this.getBusinessId().equals(other.getBusinessId()))
+                && (this.getOrderId() == null ? other.getOrderId() == null
+                        : this.getOrderId().equals(other.getOrderId()))
                 && (this.getTaskId() == null ? other.getTaskId() == null : this.getTaskId().equals(other.getTaskId()))
                 && (this.getOperId() == null ? other.getOperId() == null : this.getOperId().equals(other.getOperId()))
-                && (this.getOperName() == null ? other.getOperName() == null : this.getOperName().equals(other.getOperName()))
+                && (this.getOperName() == null ? other.getOperName() == null
+                        : this.getOperName().equals(other.getOperName()))
                 && (this.getCustNo() == null ? other.getCustNo() == null : this.getCustNo().equals(other.getCustNo()))
-                && (this.getCustName() == null ? other.getCustName() == null : this.getCustName().equals(other.getCustName()))
-                && (this.getOperOrg() == null ? other.getOperOrg() == null : this.getOperOrg().equals(other.getOperOrg()))
-                && (this.getAuditDate() == null ? other.getAuditDate() == null : this.getAuditDate().equals(other.getAuditDate()))
-                && (this.getAuditTime() == null ? other.getAuditTime() == null : this.getAuditTime().equals(other.getAuditTime()))
-                && (this.getAuditContent() == null ? other.getAuditContent() == null : this.getAuditContent().equals(other.getAuditContent()))
-                && (this.getAuditResult() == null ? other.getAuditResult() == null : this.getAuditResult().equals(other.getAuditResult()))
-                && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
-                && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
-                && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
-                && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
-                && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
-                && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
-                && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
-                && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
-                && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
-                && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
+                && (this.getCustName() == null ? other.getCustName() == null
+                        : this.getCustName().equals(other.getCustName()))
+                && (this.getOperOrg() == null ? other.getOperOrg() == null
+                        : this.getOperOrg().equals(other.getOperOrg()))
+                && (this.getAuditDate() == null ? other.getAuditDate() == null
+                        : this.getAuditDate().equals(other.getAuditDate()))
+                && (this.getAuditTime() == null ? other.getAuditTime() == null
+                        : this.getAuditTime().equals(other.getAuditTime()))
+                && (this.getAuditContent() == null ? other.getAuditContent() == null
+                        : this.getAuditContent().equals(other.getAuditContent()))
+                && (this.getAuditResult() == null ? other.getAuditResult() == null
+                        : this.getAuditResult().equals(other.getAuditResult()))
+                && (this.getRegOperId() == null ? other.getRegOperId() == null
+                        : this.getRegOperId().equals(other.getRegOperId()))
+                && (this.getRegOperName() == null ? other.getRegOperName() == null
+                        : this.getRegOperName().equals(other.getRegOperName()))
+                && (this.getRegDate() == null ? other.getRegDate() == null
+                        : this.getRegDate().equals(other.getRegDate()))
+                && (this.getRegTime() == null ? other.getRegTime() == null
+                        : this.getRegTime().equals(other.getRegTime()))
+                && (this.getModiOperId() == null ? other.getModiOperId() == null
+                        : this.getModiOperId().equals(other.getModiOperId()))
+                && (this.getModiOperName() == null ? other.getModiOperName() == null
+                        : this.getModiOperName().equals(other.getModiOperName()))
+                && (this.getModiDate() == null ? other.getModiDate() == null
+                        : this.getModiDate().equals(other.getModiDate()))
+                && (this.getModiTime() == null ? other.getModiTime() == null
+                        : this.getModiTime().equals(other.getModiTime()))
+                && (this.getBusinStatus() == null ? other.getBusinStatus() == null
+                        : this.getBusinStatus().equals(other.getBusinStatus()))
+                && (this.getLastStatus() == null ? other.getLastStatus() == null
+                        : this.getLastStatus().equals(other.getLastStatus()));
     }
 
     @Override

@@ -101,10 +101,10 @@ public class WorkFlowTask {
      */
     private String orderNo;
 
-    private WorkFlowBase workFlowBase;  // 流程定义
-    private WorkFlowNode workFlowNode;  // 流程节点
-    private WorkFlowStep workFlowStep;  // 流程步骤
-    private WorkFlowBusiness workFlowBusiness;  // 流程业务
+    private WorkFlowBase workFlowBase; // 流程定义
+    private WorkFlowNode workFlowNode; // 流程节点
+    private WorkFlowStep workFlowStep; // 流程步骤
+    private WorkFlowBusiness workFlowBusiness; // 流程业务
 
     public String getId() {
         return id;

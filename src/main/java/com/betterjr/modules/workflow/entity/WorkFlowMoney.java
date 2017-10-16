@@ -18,53 +18,53 @@ import com.betterjr.common.utils.UserUtils;
 @Entity
 @Table(name = "t_sys_wf_money")
 public class WorkFlowMoney implements BetterjrEntity {
-    public static final BigDecimal MAX_AMOUNT=new BigDecimal("-1");
+    public static final BigDecimal MAX_AMOUNT = new BigDecimal("-1");
     public static final String MONEY_PARAM = "money";
 
     @Id
-    @Column(name = "ID",  columnDefinition="INTEGER" )
+    @Column(name = "ID", columnDefinition = "INTEGER")
     private Long id;
 
-    @Column(name = "N_SEQ",  columnDefinition="INTEGER" )
+    @Column(name = "N_SEQ", columnDefinition = "INTEGER")
     private Integer seq;
 
-    @Column(name = "L_BASE_ID",  columnDefinition="INTEGER" )
+    @Column(name = "L_BASE_ID", columnDefinition = "INTEGER")
     private Long baseId;
 
-    @Column(name = "N_BEGIN_MONEY",  columnDefinition="DECIMAL" )
+    @Column(name = "N_BEGIN_MONEY", columnDefinition = "DECIMAL")
     private BigDecimal beginMoney;
 
-    @Column(name = "N_END_MONEY",  columnDefinition="DECIMAL" )
+    @Column(name = "N_END_MONEY", columnDefinition = "DECIMAL")
     private BigDecimal endMoney;
 
-    @Column(name = "L_REG_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_REG_OPERID", columnDefinition = "INTEGER")
     private Long regOperId;
 
-    @Column(name = "C_REG_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_REG_OPERNAME", columnDefinition = "VARCHAR")
     private String regOperName;
 
-    @Column(name = "D_REG_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_REG_DATE", columnDefinition = "VARCHAR")
     private String regDate;
 
-    @Column(name = "T_REG_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_REG_TIME", columnDefinition = "VARCHAR")
     private String regTime;
 
-    @Column(name = "L_MODI_OPERID",  columnDefinition="INTEGER" )
+    @Column(name = "L_MODI_OPERID", columnDefinition = "INTEGER")
     private Long modiOperId;
 
-    @Column(name = "C_MODI_OPERNAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_MODI_OPERNAME", columnDefinition = "VARCHAR")
     private String modiOperName;
 
-    @Column(name = "D_MODI_DATE",  columnDefinition="VARCHAR" )
+    @Column(name = "D_MODI_DATE", columnDefinition = "VARCHAR")
     private String modiDate;
 
-    @Column(name = "T_MODI_TIME",  columnDefinition="VARCHAR" )
+    @Column(name = "T_MODI_TIME", columnDefinition = "VARCHAR")
     private String modiTime;
 
-    @Column(name = "C_BUSIN_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_BUSIN_STATUS", columnDefinition = "VARCHAR")
     private String businStatus;
 
-    @Column(name = "C_LAST_STATUS",  columnDefinition="VARCHAR" )
+    @Column(name = "C_LAST_STATUS", columnDefinition = "VARCHAR")
     private String lastStatus;
 
     private static final long serialVersionUID = 77218450107816652L;
@@ -230,18 +230,30 @@ public class WorkFlowMoney implements BetterjrEntity {
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
                 && (this.getSeq() == null ? other.getSeq() == null : this.getSeq().equals(other.getSeq()))
                 && (this.getBaseId() == null ? other.getBaseId() == null : this.getBaseId().equals(other.getBaseId()))
-                && (this.getBeginMoney() == null ? other.getBeginMoney() == null : this.getBeginMoney().equals(other.getBeginMoney()))
-                && (this.getEndMoney() == null ? other.getEndMoney() == null : this.getEndMoney().equals(other.getEndMoney()))
-                && (this.getRegOperId() == null ? other.getRegOperId() == null : this.getRegOperId().equals(other.getRegOperId()))
-                && (this.getRegOperName() == null ? other.getRegOperName() == null : this.getRegOperName().equals(other.getRegOperName()))
-                && (this.getRegDate() == null ? other.getRegDate() == null : this.getRegDate().equals(other.getRegDate()))
-                && (this.getRegTime() == null ? other.getRegTime() == null : this.getRegTime().equals(other.getRegTime()))
-                && (this.getModiOperId() == null ? other.getModiOperId() == null : this.getModiOperId().equals(other.getModiOperId()))
-                && (this.getModiOperName() == null ? other.getModiOperName() == null : this.getModiOperName().equals(other.getModiOperName()))
-                && (this.getModiDate() == null ? other.getModiDate() == null : this.getModiDate().equals(other.getModiDate()))
-                && (this.getModiTime() == null ? other.getModiTime() == null : this.getModiTime().equals(other.getModiTime()))
-                && (this.getBusinStatus() == null ? other.getBusinStatus() == null : this.getBusinStatus().equals(other.getBusinStatus()))
-                && (this.getLastStatus() == null ? other.getLastStatus() == null : this.getLastStatus().equals(other.getLastStatus()));
+                && (this.getBeginMoney() == null ? other.getBeginMoney() == null
+                        : this.getBeginMoney().equals(other.getBeginMoney()))
+                && (this.getEndMoney() == null ? other.getEndMoney() == null
+                        : this.getEndMoney().equals(other.getEndMoney()))
+                && (this.getRegOperId() == null ? other.getRegOperId() == null
+                        : this.getRegOperId().equals(other.getRegOperId()))
+                && (this.getRegOperName() == null ? other.getRegOperName() == null
+                        : this.getRegOperName().equals(other.getRegOperName()))
+                && (this.getRegDate() == null ? other.getRegDate() == null
+                        : this.getRegDate().equals(other.getRegDate()))
+                && (this.getRegTime() == null ? other.getRegTime() == null
+                        : this.getRegTime().equals(other.getRegTime()))
+                && (this.getModiOperId() == null ? other.getModiOperId() == null
+                        : this.getModiOperId().equals(other.getModiOperId()))
+                && (this.getModiOperName() == null ? other.getModiOperName() == null
+                        : this.getModiOperName().equals(other.getModiOperName()))
+                && (this.getModiDate() == null ? other.getModiDate() == null
+                        : this.getModiDate().equals(other.getModiDate()))
+                && (this.getModiTime() == null ? other.getModiTime() == null
+                        : this.getModiTime().equals(other.getModiTime()))
+                && (this.getBusinStatus() == null ? other.getBusinStatus() == null
+                        : this.getBusinStatus().equals(other.getBusinStatus()))
+                && (this.getLastStatus() == null ? other.getLastStatus() == null
+                        : this.getLastStatus().equals(other.getLastStatus()));
     }
 
     @Override
@@ -310,10 +322,10 @@ public class WorkFlowMoney implements BetterjrEntity {
      * @return
      */
     public String getSpelExpr(final String anMoneyParam) {
-        final StringBuilder builder=new StringBuilder();
+        final StringBuilder builder = new StringBuilder();
         builder.append("#").append(anMoneyParam);
         builder.append(" >= ").append(this.beginMoney);
-        if(this.endMoney.compareTo(MAX_AMOUNT)!=0){
+        if (this.endMoney.compareTo(MAX_AMOUNT) != 0) {
             builder.append(" and ");
             builder.append("#").append(anMoneyParam);
             builder.append(" < ").append(this.endMoney);

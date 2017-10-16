@@ -1,21 +1,26 @@
 package com.betterjr.modules.workflow.entity;
 
-import com.betterjr.common.annotation.*;
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.betterjr.common.entity.BetterjrEntity;
-import javax.persistence.*;
 
 @Access(AccessType.FIELD)
 @Entity
 @Table(name = "t_sys_wf_category")
 public class WorkFlowCategory implements BetterjrEntity {
     @Id
-    @Column(name = "ID",  columnDefinition="INTEGER" )
+    @Column(name = "ID", columnDefinition = "INTEGER")
     private Long id;
 
-    @Column(name = "C_NAME",  columnDefinition="VARCHAR" )
+    @Column(name = "C_NAME", columnDefinition = "VARCHAR")
     private String name;
 
-    @Column(name = "C_DESCRIPTION",  columnDefinition="VARCHAR" )
+    @Column(name = "C_DESCRIPTION", columnDefinition = "VARCHAR")
     private String description;
 
     private static final long serialVersionUID = -1596462149444904028L;
@@ -71,8 +76,9 @@ public class WorkFlowCategory implements BetterjrEntity {
         }
         WorkFlowCategory other = (WorkFlowCategory) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()));
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getDescription() == null ? other.getDescription() == null
+                        : this.getDescription().equals(other.getDescription()));
     }
 
     @Override
